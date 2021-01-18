@@ -1,0 +1,142 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  login_attempts_threshold: 3
+#  ssl_certificate: !secret ssl_cert
+#  ssl_key: !secret ssl_key
+  ip_ban_enabled: True
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+    - 172.17.0.0/16
+
+
+
+
+logger:
+  default: warning
+  #logs:
+  #  homeassistant.components.rest_command: debug
+  #   homeassistant.components.python_script: debug
+#    homeassistant.components.switch: debug
+#    homeassistant.components.input_select: debug
+#    homeassistant.components.input_boolean: debug
+#    homeassistant.components.input_text: debug
+#    homeassistant.components.cover: debug
+#    homeassistant.components.sensor: debug
+#    homeassistant.components.group: debug
+#    homeassistant.components.automation: debug
+#    homeassistant.components.script: debug
+
+
+python_script:
+
+binary_sensor:
+  - platform: ping
+    host: 8.8.8.8
+    count: 4
+    scan_interval: 60
+    name: Ping Google DNS
+  - platform: ping
+    host: !secret gw_ip
+    count: 4
+    scan_interval: 60
+    name: Ping FW
+  - platform: mqtt
+    state_topic: "shellies/shellyht-F391D8/online"
+    name: Shelly1 State
+    payload_on: "true"
+    payload_off: "false"
+  - platform: mqtt
+    state_topic: "shellies/shellyht-F03BCC/online"
+    name: Shelly2 State
+    payload_on: "true"
+    payload_off: "false"
+
+camera:
+ - platform: ffmpeg
+   name: Camera C200 rtsp
+   input: !secret tapo_host
+
+
+# Text to speech
+
+
+
+tts:
+  - platform: google_translate
+
+lovelace:
+  mode: yaml
+
+mqtt:
+#  embedded:
+  broker: localhost
+  username: homeassistant
+#  port: 1883
+  password: !secret mqtt_passwd
+  discovery: true
+  discovery_prefix: homeassistant
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
+
+
+
+vacuum:
+  - platform: xiaomi_miio
+    host: !secret vacuum_ip
+    token: !secret vacuum_token
+
+
+# pi_hole:
+#     host: !secret pi_hole_ip
+#     ssl: false
+#     verify_ssl: false
+#     api_key: !secret pi_hole_api
+    
+
+shell_command:
+  turn_off_lr_pc: !secret shell_cmd 
+
+webostv:
+  host: !secret tv_ip
+  name: Living Room TV
+  turn_on_action:
+    service: remote.send_command
+    data:
+      entity_id: remote.lr_broadlink_remote
+      command: "b64: JgBYAAABIJISExETETcSEhISEhQQFBETETcROBESEjcRNhM1EjcTNRMTERISNxEUERMSExE2EjYSNhM2EhIROBE3ETcREhITEgAFGwABH0oSAAwzAAEfShEADQU="
+  customize:
+    sources:
+      - netflix
+      - HDMI 3
+      - Plex
+
+rest_command:
+  duckdns_update:
+    url: !secret duckdns_url
+
+
+ #switch: !include switches.yaml
+switch: !include_dir_merge_list switches/
+ #media_player: !include media_players.yaml
+input_select: !include input_select.yaml
+input_boolean: !include input_boolean.yaml
+input_text: !include input_text.yaml
+sensor: !include sensors.yaml
+cover: !include covers.yaml
+group: !include groups.yaml
+ # cloud: !include cloud.yaml
+ # google_assistant: !include google_assistant.yaml
+automation: !include automations.yaml
+script: !include_dir_merge_named scripts/
+ #script: !include scripts.yaml
+homeassistant:
+  customize: !include customize.yaml

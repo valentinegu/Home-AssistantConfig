@@ -1,0 +1,229 @@
+title: My Awesome Home
+views:
+    # View tab title.
+  - title: Home
+    cards:
+     - type: glance
+       show_state: false
+       entities:
+       - entity: script.good_night
+         icon: mdi:weather-night
+         tap_action: 
+           action: toggle
+
+     - type: glance
+       title: Lights
+       columns: 4
+       entities:
+        - entity: switch.lr_entry_light
+          tap_action:
+            action: toggle
+        - entity: switch.lr_light1
+          tap_action:
+            action: toggle
+        - entity: switch.lr_light2
+          tap_action:
+            action: toggle
+        - entity: switch.living_room_lamp
+          name: "Lamp"
+          tap_action:
+            action: toggle
+        - entity: switch.kitchen1
+          tap_action:
+            action: toggle
+        - entity: switch.kitchen2
+          tap_action:
+            action: toggle
+        - entity: switch.toilet
+          tap_action:
+            action: toggle
+        - entity: switch.bathroom
+          tap_action:
+            action: toggle
+        - entity: switch.alice_bed_light
+          name: "Alice Lamp"
+          tap_action: 
+            action: toggle
+        - entity: switch.val_bed_light
+          name: "Val Lamp"
+          tap_action:
+            action: toggle
+        - entity: switch.pantry
+          tap_action:
+            action: toggle
+        - entity: switch.office_light
+          tap_action:
+            action: toggle
+        - entity: switch.ariels_room
+          tap_action:
+            action: toggle
+        - entity: switch.washer_light
+          tap_action:
+            action: toggle
+        - entity: switch.ariel_lamp
+          tap_action:
+            action: toggle
+
+
+     - type: entities
+       show_header_toggle: false
+       title: Living Room
+       entities:
+        - vacuum.xiaomi_vacuum_cleaner
+        - sensor.shelly2_temperature
+        - sensor.shelly2_humidity
+        - script.livingroom_ac_20c
+        - script.livingroom_ac_off
+
+     - type: media-control
+       entity: media_player.living_room_tv
+
+     - type: entities
+       title: Boiler
+       show_header_toggle: false
+       entities:
+         - switch.watter_heater
+         - sensor.watter_heater_watts
+         - sensor.watter_heater_amps
+         - input_select.watter_heater_timer_select
+         - script.boiler_timer_on
+
+     - type: entities
+       title: Bathroom Heater
+       show_header_toggle: false
+       entities:
+         - switch.room_heater
+         - binary_sensor.0x00158d0003d0c033_contact
+         - sensor.room_heater_watts
+         - sensor.room_heater_amps
+         - input_select.room_heater_timer_select
+         - script.bathroom_heater_timer_on 
+
+     - type: glance
+       title: Bedroom
+       entities:
+        - entity: switch.bedroom_ac
+          tap_action: 
+            action: toggle
+        - entity: switch.alice_bed_light
+          name: "Bed Lamp"
+          tap_action: 
+            action: toggle
+        - entity: switch.val_bed_light
+          tap_action: 
+            action: toggle
+
+
+  - title: Environment
+    badges:
+     - weather.home
+     - sun.sun
+     - sensor.season
+     - sensor.transmission_active_torrents
+     - sensor.transmission_status
+ 
+    cards:
+     - type: entities
+       title: HA Status
+       show_header_toggle: false
+       entities:
+        - sensor.last_boot
+        # - sensor.processor_use
+        - sensor.memory_use_percent
+        - sensor.disk_use_percent_home
+        - sensor.network_throughput_in_eth0 
+        - sensor.network_throughput_out_eth0
+        - sensor.network_in_eth0
+        - sensor.network_out_eth0
+        - switch.living_room_pc
+
+     - type: entities
+       title: Temperture
+       show_header_toggle: false
+       entities:
+        - sensor.shelly1_temperature
+        - sensor.shelly1_humidity
+        - sensor.shelly2_temperature
+        - sensor.shelly2_humidity
+#     - type: entities 
+#       title: DNS Stats
+#       show_header_toggle: false
+#       entities:                 
+#          - entity: sensor.pi_hole_dns_queries_today
+#            name: Total Queries
+#            type: sensor         
+#          - entity: sensor.pi_hole_ads_blocked_today
+#            graph: line   
+#            name: Queries Blocked
+#            type: sensor
+#          - entity: sensor.pi_hole_ads_percentage_blocked_today
+#            graph: line          
+#            name: Percent Blocked
+#            type: sensor  
+#          - entity: sensor.pi_hole_domains_blocked
+#            graph: line
+#            name: Domains on Blocklist
+#            type: sensor
+
+     - type: history-graph
+       title: Network Status
+       entities:
+        - sensor.ping_google_average
+        - sensor.ping_fw_average
+
+     - type: history-graph
+       title: Torrent Status
+       entities:
+        - sensor.transmission_down_speed
+        - sensor.transmission_up_speed
+
+
+     - type: picture-entity
+       title: Camera
+       #camera_image: camera.camera_c200_rtsp
+       camera_view: live
+       entity: camera.camera_c200_rtsp
+
+
+  - title: AC Controls
+    cards:
+     - type: entities
+       title: Living Room AC
+       show_header_toggle: false
+       entities:
+        - switch.lr_ac_state
+        - sensor.lr_ac_temp_sensor
+        - cover.lr_ac_temp_cover
+        - input_select.lr_ac_mode
+        - input_select.lr_ac_fan
+
+     - type: entities
+       title: Office AC
+       show_header_toggle: false
+       entities:
+        - switch.or_ac_state
+        - sensor.or_ac_temp_sensor
+        - cover.or_ac_temp_cover
+        - input_select.or_ac_mode
+        - input_select.or_ac_fan
+
+     - type: entities
+       title: Bedroom AC
+       show_header_toggle: false
+       entities:
+        - switch.br_ac_state
+        - sensor.br_ac_temp_sensor
+        - cover.br_ac_temp_cover
+        - input_select.br_ac_mode
+        - input_select.br_ac_fan
+
+     - type: entities
+       title: Ariels AC
+       show_header_toggle: false
+       entities:
+        - switch.nr_ac_state
+        - sensor.nr_ac_temp_sensor
+        - cover.nr_ac_temp_cover
+        - input_select.nr_ac_mode
+        - input_select.nr_ac_fan
+

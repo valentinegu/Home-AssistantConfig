@@ -1,0 +1,37 @@
+  google_actions:
+    filter:
+      include_domains:
+        - switch
+        - media_player
+        - script
+        - vacuum
+        - group
+        - sensor
+      exclude_domains:
+        - automation
+        - binary_sensor
+        - cover
+      exclude_entities:
+        - script.tornado_ac_cool_auto_script
+        - script.tornado_ac_cool_high_script
+        - script.tornado_ac_cool_low_script
+        - script.tornado_ac_cool_med_script
+        - script.tornado_ac_heat_auto_script
+        - script.tornado_ac_heat_high_script
+        - script.tornado_ac_heat_low_script
+        - script.tornado_ac_heat_med_script
+        - group.allautomations
+        - group.all_automations
+        - group.all_covers
+        - group.all_devices
+        - group.all_scripts
+        - group.all_switches
+        - group.all_vacuum_cleaners
+        - group.badroom_switches 
+        - group.living_room_switches
+        - group.switcher_aio_v2_configuration
+        - group.switcher_aio_v2_control
+        - group.switcher_aio_v2_create_schedule
+        - group.switcher_aio_v2_schedules
+        - script.living_room_rm_pro_send_packet
+        - script.office_rm_pro_send_packet

@@ -1,0 +1,158 @@
+sensor.shelly_h_t_f03bcc_temperature:
+  friendly_name: Bedroom Tempperture
+sensor.shelly_h_t_f03bcc_humidity:
+  friendly_name: Bedroom Humidity
+sensor.shelly_h_t_f03bcc_battery:
+  friendly_name: Bedroom Shelly Battery
+sensor.shelly_h_t_f391d8_temperature:
+  friendly_name: Ariel Room Tempperture
+sensor.shelly_h_t_f391d8_humidity:
+  friendly_name: Ariel Room Humidity
+sensor.shelly_h_t_f391d8_battery:
+  friendly_name: Ariel Room Shelly Battery
+script.good_night:
+  icon: mdi:power-sleep
+  can_cancel: false
+script.badroom_ac_30min:
+  icon: mdi:air-conditioner
+  can_cancel: false
+script.badroom_ac_1hour:
+  icon: mdi:air-conditioner
+  can_cancel: false
+script.badroom_ac_2hour:
+  icon: mdi:air-conditioner
+  can_cancel: false
+switch.tv_onoff:
+  icon: mdi:television-classic
+  assumed_state: false
+script.livingroom_ac_20c:
+  icon: mdi:air-conditioner
+script.livingroom_ac_off:
+  icon: mdi:air-conditioner
+script.alice_office_ac_off:
+  icon: mdi:air-conditioner
+script.val_office_ac_20c:
+  icon: mdi:air-conditioner
+script.val_office_ac_off:
+  icon: mdi:air-conditioner
+group.living_room_switches:
+  name: Salon
+  assumed_state: false
+switch.living_room_lamp:
+  assumed_state: false
+  icon: mdi:lightbulb
+switch.ariel_lamp:
+  assumed_state: false
+  icon: mdi:lightbulb
+switch.ariels_room:
+  assumed_state: false
+  icon: mdi:lightbulb
+  friendly_name: "Ariel's Room"
+group.tv_controls:
+  show_header_toggle: false
+switch.bedroom_ac:
+  name: Bedroom AC
+  assumed_state: false
+  icon: mdi:air-conditioner
+switch.alice_bed_light:
+  name: "Alice Bed Light"
+  assumed_state: false
+  icon: mdi:lightbulb
+switch.val_bed_light:
+  name: Val Bed Light
+  assumed_state: false
+  icon: mdi:lightbulb
+switch.plug_2:
+  icon: mdi:bug
+  assumed_state: false
+binary_sensor.remote_ui:
+  hidden: true
+person.val_alice:
+  hidden: true
+person.valice:
+  hidden: true
+switch.lr_entry_light:
+  friendly_name: Entry Light
+  icon: mdi:lightbulb
+switch.office_light:
+  friendly_name: Office Light
+  icon: mdi:lightbulb
+switch.washer_light:
+  friendly_name: Washer Light
+  icon: mdi:lightbulb
+switch.lr_light1:
+  friendly_name: Small Light
+  icon: mdi:lightbulb
+switch.lr_light2:
+  friendly_name: Big Light
+  icon: mdi:lightbulb
+switch.kitchen1:
+  friendly_name: Kitchen Light 1
+  icon: mdi:lightbulb
+switch.kitchen2:
+  friendly_name: Kitchen Light 2
+  icon: mdi:lightbulb
+switch.toilet:
+  friendly_name: Toilet Light
+  icon: mdi:lightbulb
+switch.bathroom:
+  friendly_name: Bathroom Light
+  icon: mdi:lightbulb
+switch.pantry:
+  friendly_name: Pantry Light
+  icon: mdi:lightbulb  
+switch.bf9723b0f9183e958ewpbb:
+  name: Mosquito
+  icon: mdi:bug
+  asumed_state: false
+switch.bf27199e8877d13631xsqm:
+  name: Iron
+switch.mazgan_salon_20c:
+  hidden: true
+switch.alice_office_ac_20c:
+  hidden: true
+switch.alice_office_ac_25c:
+  hidden: true
+switch.alice_office_ac_off:
+  hidden: true
+switch.mazgan_salon_25c:
+  hidden: true
+switch.val_office_ac_20c:
+  hidden: true
+switch.val_office_ac_25c:
+  hidden: true
+switch.val_office_ac_off:
+  hidden: true
+input_boolean.lr_ac_status:
+  friendly_name: Status
+  icon: mdi:air-conditioner
+sensor.lr_ac_temp_sensor:
+  friendly_name: Current Temperature
+  icon: mdi:thermometer
+sensor.or_ac_temp_sensor:
+  friendly_name: Current Temperature
+  icon: mdi:thermometer
+binary_sensor.lumi_lumi_sensor_magnet_03d0c033_1_6:
+  friendly_name: "Bathroom Door"
+cover.lr_ac_temp_cover:
+  friendly_name: Change Temperature
+  icon: mdi:temperature-celsius
+cover.or_ac_temp_cover:
+  friendly_name: Change Temperature
+  icon: mdi:temperature-celsius
+input_select.lr_ac_mode:
+  friendly_name: Mode
+  icon: mdi:weather-windy-variant
+input_select.lr_ac_fan:
+  friendly_name: Fan
+  icon: mdi:fan
+group.living_room_ac:
+  friendly_name: Living Room AC
+  control: hidden
+
+sensor.lumi_lumi_weather_0411a952_1_1026:
+  friendly_name: Nursery Temperature
+sensor.lumi_lumi_weather_0411a952_1_1029:
+  friendly_name: Nursery Humidity
+media_player.living_room_tv:
+  device_class: 'tv'

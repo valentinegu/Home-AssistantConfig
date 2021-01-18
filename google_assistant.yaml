@@ -1,0 +1,70 @@
+  project_id: !secret google_pid
+  api_key: !secret google_api_key
+  service_account: !include google.json
+  report_state: true
+  expose_by_default: false
+  entity_config:
+    switch.ariel_lamp:
+        expose: true
+    switch.room_heater:
+        expose: true
+    switch.alice_bed_light:
+        expose: true
+    switch.val_bed_light:
+        expose: true
+    switch.watter_heater:
+        expose: true
+    switch.bf27199e8877d13631xsqm:
+        expose: true
+    switch.lr_ac_state:
+        expose: true
+    switch.living_room_lamp:
+        expose: true
+    switch.bf9723b0f9183e958ewpbb:
+        expose: true
+    switch.mosquito2_sonoff:
+        expose: true
+    switch.ariels_room:
+        expose: true
+    switch.bathroom:
+        expose: true
+    switch.kitchen1:
+        expose: true
+    switch.kitchen2:
+        expose: true
+    switch.lr_entry_light:
+        expose: true
+    switch.lr_light1:
+        expose: true
+    switch.lr_light2:
+        expose: true
+    switch.office_light:
+        expose: true
+    switch.pantry:
+        expose: true
+    switch.pow1_sonoff:
+        expose: true
+    switch.toilet:
+        expose: true
+    switch.washer_light:
+        expose: true
+    vacuum.xiaomi_vacuum_cleaner:
+        expose: true
+    media_player.living_room_tv:
+        expose: true
+    input_boolean.lr_ac_status:
+        expose: true
+        name: "Living Room AC"
+    input_boolean.or_ac_status:
+        expose: true
+        name: "Office Room AC"
+    script.good_night:
+        expose: true
+    script.living_room_pause_playback:
+        expose: true
+    script.living_room_resume_playback:
+        expose: true
+    group.bedroom_lights:
+        expose: true
+    group.livingroom_lights:
+        expose: true

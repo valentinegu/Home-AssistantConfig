@@ -1,0 +1,15 @@
+lr_ac_status:
+  name: "lr_ac_status"
+  initial: off
+
+or_ac_status:
+  name: "Office AC Status"
+  initial: off
+
+nr_ac_status:
+  name: "Nursery AC Status"
+  initial: off
+
+br_ac_status:
+  name: "Bedroom AC Status"
+  initial: off

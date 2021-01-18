@@ -1,0 +1,16 @@
+lr_ac_temp_text:
+  name: lr_ac_temp_text
+  initial: 25
+
+or_ac_temp_text:
+  name: or_ac_temp_text
+  initial: 25
+
+nr_ac_temp_text:
+  name: nr_ac_temp_text
+  initial: 25
+
+br_ac_temp_text:
+  name: br_ac_temp_text
+  initial: 25
+

@@ -1,0 +1,74 @@
+lr_ac_fan:
+  name: lr_ac_fan
+  options:
+   - LOW
+   - MED
+   - HIGH
+   - AUTO
+
+lr_ac_mode:
+  name: lr_ac_mode
+  options:
+   - COOL
+   - HEAT
+
+or_ac_fan:
+  name: lr_ac_fan
+  options:
+   - LOW
+   - MED
+   - HIGH
+   - AUTO
+
+or_ac_mode:
+  name: lr_ac_mode
+  options:
+   - COOL
+   - HEAT
+
+nr_ac_fan:
+  name: "Nursery AC fan"
+  options:
+   - LOW
+   - MED
+   - HIGH
+   - AUTO
+
+nr_ac_mode:
+  name: "Nursery AC Mode"
+  options:
+   - COOL
+   - HEAT
+
+br_ac_fan:
+  name: "Bedroom AC fan"
+  options:
+   - LOW
+   - MED
+   - HIGH
+   - AUTO
+
+br_ac_mode:
+  name: "Bedroom AC Mode"
+  options:
+   - COOL
+   - HEAT
+
+room_heater_timer_select:
+  name: Bathroom Heater Length
+  initial: 15
+  options:
+   - 15
+   - 30
+   - 45
+   - 60
+
+watter_heater_timer_select:
+  name: Boiler Length
+  initial: 15
+  options:
+   - 15
+   - 30
+   - 45
+   - 60
+

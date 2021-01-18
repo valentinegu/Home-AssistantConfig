@@ -1,0 +1,9 @@
+  - platform: wake_on_lan
+    mac: "D0:27:88:32:8C:50"
+    name: Living Room PC
+    host: !secret lr_pc_ip
+    broadcast_address: "10.10.11.255"
+
+    turn_off:
+      service: shell_command.turn_off_lr_pc
+

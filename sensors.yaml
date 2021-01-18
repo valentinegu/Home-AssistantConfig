@@ -1,0 +1,95 @@
+- platform: template
+  sensors:
+    lr_ac_temp_sensor:
+      value_template: "{{ states.input_text.lr_ac_temp_text.state }}"
+    or_ac_temp_sensor:
+      value_template: "{{ states.input_text.or_ac_temp_text.state }}"
+    nr_ac_temp_sensor:
+      value_template: "{{ states.input_text.nr_ac_temp_text.state }}"
+    br_ac_temp_sensor:
+      value_template: "{{ states.input_text.br_ac_temp_text.state }}"
+
+
+- platform: season
+
+#- platform: successful_logins
+#  provider: 'extreme'
+
+- platform: systemmonitor
+  resources:
+  - type: disk_use_percent
+    arg: /home
+  - type: memory_use_percent
+  - type: last_boot
+  - type: processor_use
+  - type: network_in
+    arg: eth0
+  - type: network_out
+    arg: eth0
+  - type: throughput_network_in
+    arg: eth0
+  - type: throughput_network_out
+    arg: eth0
+
+- platform: template
+  sensors:
+    ping_google_average:
+      value_template: "{{ state_attr('binary_sensor.ping_google_dns', 'round_trip_time_avg') }}"
+      unit_of_measurement: ms
+    ping_fw_average:
+      value_template: "{{ state_attr('binary_sensor.ping_fw', 'round_trip_time_avg') }}"
+      unit_of_measurement: ms
+    watter_heater_watts: 
+      friendly_name: Boiler Usage Watt
+      unit_of_measurement: 'W'
+      value_template: >
+        {% if state_attr('switch.watter_heater', 'current_power_watts') %} {{ state_attr('switch.watter_heater', 'current_power_watts') }}
+        {% else %} 0
+        {% endif %}
+    watter_heater_amps:
+      friendly_name: Boiler Usage Amp
+      unit_of_measurement: 'A'
+      value_template: >
+        {% if state_attr('switch.watter_heater', 'current_power_amps') %} {{ state_attr('switch.watter_heater', 'current_power_amps') }}
+        {% else %} 0
+        {% endif %}
+    room_heater_watts:
+      friendly_name: Bathroom Heater usage Watt
+      unit_of_measurement: 'W'
+      value_template: >
+        {% if state_attr('switch.room_heater', 'current_power_watts') %} {{ state_attr('switch.room_heater', 'current_power_watts') }}
+        {% else %} 0
+        {% endif %}
+    room_heater_amps:
+      friendly_name: Bathroom Heater usage Amp
+      unit_of_measurement: 'A'
+      value_template: >
+        {% if state_attr('switch.room_heater', 'current_power_amps') %} {{ state_attr('switch.room_heater', 'current_power_amps') }}
+        {% else %} 0
+        {% endif %}
+
+- platform: mqtt
+  name: Shelly1 Humidity
+  state_topic: "shellies/shellyht-F391D8/sensor/humidity"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: Shelly1 Temperature
+  state_topic: "shellies/shellyht-F391D8/sensor/temperature"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: Shelly1 Battery
+  state_topic: "shellies/shellyht-F391D8/sensor/battery"
+  unit_of_measurement: "%"
+
+- platform: mqtt
+  name: Shelly2 Humidity
+  state_topic: "shellies/shellyht-F03BCC/sensor/humidity"
+  unit_of_measurement: "%"
+- platform: mqtt
+  name: Shelly2 Temperature
+  state_topic: "shellies/shellyht-F03BCC/sensor/temperature"
+  unit_of_measurement: "°C"
+- platform: mqtt
+  name: Shelly2 Battery
+  state_topic: "shellies/shellyht-F03BCC/sensor/battery"
+  unit_of_measurement: "%"

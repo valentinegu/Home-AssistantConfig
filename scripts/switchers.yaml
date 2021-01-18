@@ -1,0 +1,32 @@
+bathroom_heater_timer_on:
+  alias: "Turn On Bathroom Heater Timer"
+  sequence:
+  - service_template: >
+      {% if is_state("input_select.room_heater_timer_select", "15")%}
+        switch.switcher_heater_turn_on_15_minutes
+      {% elif is_state("input_select.room_heater_timer_select", "30")%}
+        switch.switcher_heater_turn_on_30_minutes
+      {% elif is_state("input_select.room_heater_timer_select", "45")%}
+        switch.switcher_heater_turn_on_45_minutes
+      {% elif is_state("input_select.room_heater_timer_select", "60")%}
+        switch.switcher_heater_turn_on_60_minutes
+      {% endif %}
+    data:
+      entity_id: switch.room_heater
+
+boiler_timer_on:
+  alias: "Turn On Boiler Timer"
+  sequence:
+  - service_template: >
+      {% if is_state("input_select.watter_heater_timer_select", "15")%}
+        switch.switcher_heater_turn_on_15_minutes
+      {% elif is_state("input_select.watter_heater_timer_select", "30")%}
+        switch.switcher_heater_turn_on_30_minutes
+      {% elif is_state("input_select.watter_heater_timer_select", "45")%}
+        switch.switcher_heater_turn_on_45_minutes
+      {% elif is_state("input_select.watter_heater_timer_select", "60")%}
+        switch.switcher_heater_turn_on_60_minutes
+      {% endif %}
+    data:
+      entity_id: switch.watter_heater
+

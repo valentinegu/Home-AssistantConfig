@@ -1,0 +1,22 @@
+# You can whitelist files/folders with !, these will not be ignored.
+!*.yaml
+!.gitignore
+!*.md
+!switches/*.yaml
+!scripts/*.yaml
+
+# Ignore folders.
+.storage
+.cloud
+.google.token
+custom_components
+
+# Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml
+google.json
+
+# Ignore extentions
+*.db
+*.log

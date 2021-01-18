@@ -1,0 +1,14 @@
+- platform: webostv
+  host: !secret tv_ip
+  name: Living Room TV
+  timeout: 5
+  turn_on_action:
+    service: broadlink.send
+    data:
+      host: !secret lr_bradlink_ip
+      packet: JgBYAAABIJISExETETcSEhISEhQQFBETETcROBESEjcRNhM1EjcTNRMTERISNxEUERMSExE2EjYSNhM2EhIROBE3ETcREhITEgAFGwABH0oSAAwzAAEfShEADQU=
+  customize:
+    sources:
+      - netflix
+      - HDMI 3
+      - Plex

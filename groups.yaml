@@ -1,0 +1,31 @@
+  living_room_ac:
+    name: living_room_ac
+    entities:
+      - input_boolean.lr_ac_status
+      - sensor.lr_ac_temp_sensor
+      - cover.lr_ac_temp_cover
+      - input_select.lr_ac_mode
+      - input_select.lr_ac_fan
+
+  living_room_lights:
+    name: "Living Room Lights"
+    entities:
+      - switch.lr_entry_light
+      - switch.lr_light1
+      - switch.lr_light2
+
+  badroom_switches:
+    name: Bedroom Controls
+    entities:
+      - switch.bedroom_ac
+      - switch.alice_bed_light
+      - script.badroom_ac_30min
+      - script.badroom_ac_1hour
+      - script.badroom_ac_2hour
+
+  bedroom_lights:
+    name: "Bedroom Lights"
+    entities:
+      - switch.val_bed_light
+      - switch.alice_bed_light
+
