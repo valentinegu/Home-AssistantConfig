@@ -18,9 +18,11 @@ http:
 
 logger:
   default: warning
-  #logs:
+#  logs:
   #  homeassistant.components.rest_command: debug
   #   homeassistant.components.python_script: debug
+#    homeassistant.components.remote: debug
+#    homeassistant.components.script: debug
 #    homeassistant.components.switch: debug
 #    homeassistant.components.input_select: debug
 #    homeassistant.components.input_boolean: debug
@@ -61,10 +63,53 @@ camera:
    name: Camera C200 rtsp
    input: !secret tapo_host
 
+upnp:
 
 # Text to speech
 
-
+homekit:
+  - filter:
+      include_entities:
+        - binary_sensor.0x00158d0003d0c033_contact
+        - camera.camera_c200_rtsp
+        - input_select.br_ac_mode
+        - input_select.lr_ac_mode
+        - input_select.nr_ac_mode
+        - input_select.or_ac_mode
+        - input_select.room_heater_timer_select
+        - input_select.watter_heater_timer_select
+        - media_player.living_room_tv
+        - script.bathroom_heater_timer_on
+        - script.boiler_timer_on
+        - script.good_night
+        - sensor.shelly1_humidity
+        - sensor.shelly1_temperature
+        - sensor.shelly2_humidity
+        - sensor.shelly2_humidity
+        - sensor.shelly2_temperature
+        - sensor.shelly2_temperature
+        - switch.alice_bed_light
+        - switch.ariels_room
+        - switch.bathroom
+        - switch.bedroom_ac
+        - switch.br_ac_state
+        - switch.kitchen1
+        - switch.kitchen2
+        - switch.living_room_lamp
+        - switch.lr_ac_state
+        - switch.lr_entry_light
+        - switch.lr_light1
+        - switch.lr_light2
+        - switch.nr_ac_state
+        - switch.office_light
+        - switch.or_ac_state
+        - switch.pantry
+        - switch.room_heater
+        - switch.toilet
+        - switch.val_bed_light
+        - switch.washer_light
+        - switch.watter_heater
+        - vacuum.xiaomi_vacuum_cleaner
 
 tts:
   - platform: google_translate
@@ -73,10 +118,8 @@ lovelace:
   mode: yaml
 
 mqtt:
-#  embedded:
   broker: localhost
   username: homeassistant
-#  port: 1883
   password: !secret mqtt_passwd
   discovery: true
   discovery_prefix: homeassistant
@@ -95,12 +138,6 @@ vacuum:
     token: !secret vacuum_token
 
 
-# pi_hole:
-#     host: !secret pi_hole_ip
-#     ssl: false
-#     verify_ssl: false
-#     api_key: !secret pi_hole_api
-    
 
 shell_command:
   turn_off_lr_pc: !secret shell_cmd 

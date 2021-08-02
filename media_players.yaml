@@ -3,10 +3,10 @@
   name: Living Room TV
   timeout: 5
   turn_on_action:
-    service: broadlink.send
+    service: remote.send_command
     data:
-      host: !secret lr_bradlink_ip
-      packet: JgBYAAABIJISExETETcSEhISEhQQFBETETcROBESEjcRNhM1EjcTNRMTERISNxEUERMSExE2EjYSNhM2EhIROBE3ETcREhITEgAFGwABH0oSAAwzAAEfShEADQU=
+      entity_id: remote.lr_broadlink_remote
+      command: b64:JgBYAAABIJISExETETcSEhISEhQQFBETETcROBESEjcRNhM1EjcTNRMTERISNxEUERMSExE2EjYSNhM2EhIROBE3ETcREhITEgAFGwABH0oSAAwzAAEfShEADQU=
   customize:
     sources:
       - netflix

@@ -18,8 +18,8 @@
 
   - platform: mqtt
     name: "Ariel Lamp"
-    command_topic: "cmnd/Ariel_lamp/POWER"
-    state_topic: "stat/Ariel_lamp/POWER"
+    command_topic: "cmnd/yes/POWER"
+    state_topic: "stat/yes/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
@@ -34,21 +34,21 @@
     payload_off: "OFF"
     retain: false
 
-  - platform: mqtt
-    name: "Mosquito2_sonoff"
-    command_topic: "cmnd/sonoff_mosquito2/POWER"
-    state_topic: "stat/sonoff_mosquito2/POWER"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: false
+  # - platform: mqtt
+  #   name: "Mosquito2_sonoff"
+  #   command_topic: "cmnd/sonoff_mosquito2/POWER"
+  #   state_topic: "stat/sonoff_mosquito2/POWER"
+  #   qos: 1
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   retain: false
 
-  - platform: mqtt
-    name: "pow1_sonoff"
-    command_topic: "cmnd/pow1/POWER"
-    state_topic: "stat/pow1/POWER"
-    qos: 1
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: false
+  # - platform: mqtt
+  #   name: "pow1_sonoff"
+  #   command_topic: "cmnd/pow1/POWER"
+  #   state_topic: "stat/pow1/POWER"
+  #   qos: 1
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   retain: false
 

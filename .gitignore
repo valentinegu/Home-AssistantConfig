@@ -10,13 +10,17 @@
 .cloud
 .google.token
 custom_components
+blueprints
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
 google.json
+.gitignore
 
 # Ignore extentions
 *.db
 *.log
+*.db-shm
+*.db-wal

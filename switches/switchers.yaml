@@ -1,20 +1,20 @@
-  - platform: switcher_heater
-    switches:
-      room_heater:
-        local_ip_addr: !secret room_heater_ip
-        friendly_name: "Bathroom Heater"
-        scan_interval: 20
-        phone_id: !secret switcher_phone_id
-        device_id: !secret switcher_id
-        device_password: !secret switcher_pass
-      watter_heater:
-        local_ip_addr: !secret watter_heater_ip
-        friendly_name: "Boiler"
-        scan_interval: 20
-        icon: mdi:water
-        phone_id: !secret switcher_phone_id
-        device_id: !secret switcher_dev_id
-        device_password: !secret switcher_passwd
+  # - platform: switcher_heater
+  #   switches:
+  #     room_heater:
+  #       local_ip_addr: !secret room_heater_ip
+  #       friendly_name: "Bathroom Heater"
+  #       scan_interval: 20
+  #       phone_id: !secret switcher_phone_id
+  #       device_id: !secret switcher_id
+  #       device_password: !secret switcher_pass
+  #     watter_heater:
+  #       local_ip_addr: !secret watter_heater_ip
+  #       friendly_name: "Boiler"
+  #       scan_interval: 20
+  #       icon: mdi:water
+  #       phone_id: !secret switcher_phone_id
+  #       device_id: !secret switcher_dev_id
+  #       device_password: !secret switcher_passwd
 
 #      plug_1:
 #        local_ip_addr: !secret switcher_plug_1_ip

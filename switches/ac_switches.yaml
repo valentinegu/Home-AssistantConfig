@@ -4,10 +4,10 @@
         friendly_name: "Living Room AC Status"
         value_template: "{{ is_state('binary_sensor.0x00158d000357e3e8_contact', 'on') }}"
         turn_on:
-          - service: remote.send_command
-            data:
-              entity_id: remote.lr_broadlink_remote
-              command: "b64: JgBgAQABKZMVNRU1FRAVERQRFREUERU2FBEVNRU1FRAVERUQFREVERQ1FTUVNhQRFRAVERURFREUEBU1FRAVERUQFREVNhQRFRAVEBUQFREUERURFBIUERUQFBEVEBURFBEVERQSFBAVAAEEFREUERQ2FBETOBMSFBIUNhQ2FREUNhMSFREUNhMTExIVERMSFBEUERQSFBEUEhMTExIUERMSFBEVERQSFBEVERQRFBEVEBURFBEVERURFBEVEBUQFRAVERUQFREVERQRFRAVEBUQFREVERQRFREUERUQFRAVNRURFTUVNhU1FTUVAAEEFRAVEBURFREUERQRFREVEBU1FREUERUQFREUERURFRAVERQRFBEVEBURFREUERURFBEVEBUQFREUERURFRAVERUQFRAVEBU2FBEVERURFBEVEBUQFRAVERUQFREVERQRFTUVEBURFDYVEBURFREUERQADQUAAAAAAAAAAA=="
+          - service: script.tornado_ac_turn_on
+            data_template:
+              selected_broadlink: 'remote.lr_broadlink_remote'
+              selected_mode: '{{ states.input_select.lr_ac_mode.state }}'
           - delay:
               seconds: 1
           - service: script.tornado_ac_change_state
@@ -23,12 +23,12 @@
             command: b64:JgBgAQABK5UROBE4EhISEhETERMRExE4ExISNxE4ERMRExETEhISEhISERMROBETEhIRExETERMRExI3EhIUEBETERMRExI3EhISEhETERMRExETEhISEhETERMRExETEhISEhETERMUAAEKERMRExETERMSEhISERMROBETERMSEhISEhIRExETERMRExISEhIRExETERMRExISEhISEhETERMRExETEhISEhETERMRExETEhISEhISERMRExETERMSEhISERMRExETETgSEhI3ETgROBETERMRExI3EjgQExE4EjcSEhETERMTAAELERMRExETEhISEhISERMRExE4ERMSEhISERMRExETERMSEhISERMRExISERMRExETERMSEhISERMRExETERMSEhISERMRExETERMROBISEhIRExETERMROBI3EhIRExETETgRExETEjcSNxE4ERMRExEADQUAAAAAAAAAAA==
       or_ac_state:
         friendly_name: "Office AC Status"
-        value_template: "{{ is_state('binary_sensor.lumi_lumi', 'on') }}"
+        value_template: "{{ is_state('binary_sensor.0x00158d0003f880b7_contact', 'on') }}"
         turn_on:
-          - service: remote.send_command
-            data:
-              entity_id: remote.or_broadlink_remote
-              command: "b64: JgBgAQABKZMVNRU1FRAVERQRFREUERU2FBEVNRU1FRAVERUQFREVERQ1FTUVNhQRFRAVERURFREUEBU1FRAVERUQFREVNhQRFRAVEBUQFREUERURFBIUERUQFBEVEBURFBEVERQSFBAVAAEEFREUERQ2FBETOBMSFBIUNhQ2FREUNhMSFREUNhMTExIVERMSFBEUERQSFBEUEhMTExIUERMSFBEVERQSFBEVERQRFBEVEBURFBEVERURFBEVEBUQFRAVERUQFREVERQRFRAVEBUQFREVERQRFREUERUQFRAVNRURFTUVNhU1FTUVAAEEFRAVEBURFREUERQRFREVEBU1FREUERUQFREUERURFRAVERQRFBEVEBURFREUERURFBEVEBUQFREUERURFRAVERUQFRAVEBU2FBEVERURFBEVEBUQFRAVERUQFREVERQRFTUVEBURFDYVEBURFREUERQADQUAAAAAAAAAAA=="
+          - service: script.tornado_ac_turn_on
+            data_template:
+              selected_broadlink: 'remote.or_broadlink_remote'
+              selected_mode: '{{ states.input_select.or_ac_mode.state }}'
           - delay:
               seconds: 1
           - service: script.tornado_ac_change_state
@@ -41,7 +41,7 @@
           - service: remote.send_command
             data:
               entity_id: remote.or_broadlink_remote
-              packet: "b64: JgBgAQABK5UROBE4EhISEhETERMRExE4ExISNxE4ERMRExETEhISEhISERMROBETEhIRExETERMRExI3EhIUEBETERMRExI3EhISEhETERMRExETEhISEhETERMRExETEhISEhETERMUAAEKERMRExETERMSEhISERMROBETERMSEhISEhIRExETERMRExISEhIRExETERMRExISEhISEhETERMRExETEhISEhETERMRExETEhISEhISERMRExETERMSEhISERMRExETETgSEhI3ETgROBETERMRExI3EjgQExE4EjcSEhETERMTAAELERMRExETEhISEhISERMRExE4ERMSEhISERMRExETERMSEhISERMRExISERMRExETERMSEhISERMRExETERMSEhISERMRExETERMROBISEhIRExETERMROBI3EhIRExETETgRExETEjcSNxE4ERMRExEADQUAAAAAAAAAAA=="
+              command: b64:JgBgAQABK5UROBE4EhISEhETERMRExE4ExISNxE4ERMRExETEhISEhISERMROBETEhIRExETERMRExI3EhIUEBETERMRExI3EhISEhETERMRExETEhISEhETERMRExETEhISEhETERMUAAEKERMRExETERMSEhISERMROBETERMSEhISEhIRExETERMRExISEhIRExETERMRExISEhISEhETERMRExETEhISEhETERMRExETEhISEhISERMRExETERMSEhISERMRExETETgSEhI3ETgROBETERMRExI3EjgQExE4EjcSEhETERMTAAELERMRExETEhISEhISERMRExE4ERMSEhISERMRExETERMSEhISERMRExISERMRExETERMSEhISERMRExETERMSEhISERMRExETERMROBISEhIRExETERMROBI3EhIRExETETgRExETEjcSNxE4ERMRExEADQUAAAAAAAAAAA==
 
       nr_ac_state:
         friendly_name: "Nursery Room AC Status"
@@ -49,25 +49,25 @@
         turn_on:
           - service: remote.send_command
             data:
-              entity_id: remote.or_broadlink_remote
+              entity_id: remote.ar_broadlink_remote
               command: "b64:JgBgAQABKZMVNRU1FRAVERQRFREUERU2FBEVNRU1FRAVERUQFREVERQ1FTUVNhQRFRAVERURFREUEBU1FRAVERUQFREVNhQRFRAVEBUQFREUERURFBIUERUQFBEVEBURFBEVERQSFBAVAAEEFREUERQ2FBETOBMSFBIUNhQ2FREUNhMSFREUNhMTExIVERMSFBEUERQSFBEUEhMTExIUERMSFBEVERQSFBEVERQRFBEVEBURFBEVERURFBEVEBUQFRAVERUQFREVERQRFRAVEBUQFREVERQRFREUERUQFRAVNRURFTUVNhU1FTUVAAEEFRAVEBURFREUERQRFREVEBU1FREUERUQFREUERURFRAVERQRFBEVEBURFREUERURFBEVEBUQFREUERURFRAVERUQFRAVEBU2FBEVERURFBEVEBUQFRAVERUQFREVERQRFTUVEBURFDYVEBURFREUERQADQUAAAAAAAAAAA=="
           - delay:
               seconds: 1
           - service: script.tornado_ac_change_state
             data_template:
               selected_broadlink: 'remote.or_broadlink_remote'
-              selected_mode: '{{ states.input_select.lr_ac_mode.state }}'
-              selected_fan: '{{ states.input_select.lr_ac_fan.state }}'
-              selected_temp: '{{ states.sensor.lr_ac_temp_sensor.state }}'
+              selected_mode: '{{ states.input_select.nr_ac_mode.state }}'
+              selected_fan: '{{ states.input_select.nr_ac_fan.state }}'
+              selected_temp: '{{ states.sensor.nr_ac_temp_sensor.state }}'
         turn_off:
           - service: remote.send_command
             data:
-              entity_id: remote.nr_broadlink_remote
+              entity_id: remote.ar_broadlink_remote
               command: "b64:JgBgAQABK5UROBE4EhISEhETERMRExE4ExISNxE4ERMRExETEhISEhISERMROBETEhIRExETERMRExI3EhIUEBETERMRExI3EhISEhETERMRExETEhISEhETERMRExETEhISEhETERMUAAEKERMRExETERMSEhISERMROBETERMSEhISEhIRExETERMRExISEhIRExETERMRExISEhISEhETERMRExETEhISEhETERMRExETEhISEhISERMRExETERMSEhISERMRExETETgSEhI3ETgROBETERMRExI3EjgQExE4EjcSEhETERMTAAELERMRExETEhISEhISERMRExE4ERMSEhISERMRExETERMSEhISERMRExISERMRExETERMSEhISERMRExETERMSEhISERMRExETERMROBISEhIRExETERMROBI3EhIRExETETgRExETEjcSNxE4ERMRExEADQUAAAAAAAAAAA=="
 
       br_ac_state:
         friendly_name: "Bedroom AC Status"
-        value_template: "{{ is_state('', 'on') }}"
+        value_template: "{{ is_state('binary_sensor.0x00158d0003f88016_contact', 'on') }}"
         turn_on:
           - service: remote.send_command
             data:
@@ -77,7 +77,7 @@
               seconds: 1
           - service: script.br_ac_check_state_script
             data_template:
-              selected_broadlink: 'remote.or_broadlink_remote'
+              selected_broadlink: 'remote.br_broadlink_remote'
               selected_mode: '{{ states.input_select.or_ac_mode.state }}'
               selected_fan: '{{ states.input_select.or_ac_fan.state }}'
               selected_temp: '{{ states.sensor.or_ac_temp_sensor.state }}'

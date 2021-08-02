@@ -13,10 +13,6 @@
     entity_id: switch.living_room_lamp
   - delay:
       milliseconds: 500
-  - service: switch.turn_off
-    entity_id: switch.plug_2
-  - delay:
-      milliseconds: 500
 - id: f7a2d8b026634b8db2196c125bc1a426
   alias: Evening1
   trigger:
@@ -26,18 +22,18 @@
   action:
   - entity_id: switch.living_room_lamp
     service: switch.turn_on
-  - delay: '[object Object]'
-- alias: Evening2
-  initial_state: false
-  trigger:
-    platform: sun
-    event: sunset
-    offset: -00:45:00
-  action:
-  - service: switch.turn_on
-    entity_id: switch.ariel_lamp
-  - delay:
-      milliseconds: 500
+  # - delay: '[object Object]'
+# - alias: Evening2
+#   initial_state: false
+#   trigger:
+#     platform: sun
+#     event: sunset
+#     offset: -00:45:00
+#   action:
+#   - service: switch.turn_on
+#     entity_id: switch.ariel_lamp
+#   - delay:
+#       milliseconds: 500
 - id: lr_ac_changes
   alias: lr_ac_changes
   trigger:
@@ -73,27 +69,32 @@
   - service: script.tornado_ac_change_state
     data_template:
       selected_broadlink: 'remote.or_broadlink_remote'
-      selected_mode: '{{ states.input_select.lr_ac_mode.state }}'
-      selected_fan: '{{ states.input_select.lr_ac_fan.state }}'
-      selected_temp: '{{ states.sensor.lr_ac_temp_sensor.state }}'
-# - id: office_auto_light_on
-#   alias: office_auto_light_on
-#   trigger:
-#   - entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_70674c04_occupancy
-#     platform: state
-#     to: 'on'
-#   condition: []
-#   action:
-#   - entity_id: switch.office_light
-#     service: switch.turn_on
-# - id: office_auto_light_off
-#   alias: office_auto_light_off
-#   trigger:
-#   - entity_id: binary_sensor.lumi_lumi_sensor_motion_aq2_70674c04_occupancy
-#     for: 00:01:00
-#     platform: state
-#     to: 'off'
-#   action:
-#   - entity_id: switch.office_light
-#     service: switch.turn_off
-
+      selected_mode: '{{ states.input_select.or_ac_mode.state }}'
+      selected_fan: '{{ states.input_select.or_ac_fan.state }}'
+      selected_temp: '{{ states.sensor.or_ac_temp_sensor.state }}'
+- id: nr_ac_changes
+  alias: nr_ac_changes
+  trigger:
+  - platform: state
+    entity_id: sensor.nr_ac_temp_sensor
+  - platform: state
+    entity_id: input_select.nr_ac_mode
+  - platform: state
+    entity_id: input_select.nr_ac_fan
+  action:
+  - condition: state
+    entity_id: switch.or_nc_state
+    state: 'on'
+  - service: script.tornado_nc_change_state
+    data_template:
+      selected_broadlink: 'remote.ar_broadlink_remote'
+      selected_mode: '{{ states.input_select.nr_ac_mode.state }}'
+      selected_fan: '{{ states.input_select.nr_ac_fan.state }}'
+      selected_temp: '{{ states.sensor.nr_ac_temp_sensor.state }}'
+- id: duckdns_update
+  alias: duckdns_update
+  trigger:
+  - minutes: /30
+    platform: time_pattern
+  action:
+  - service: rest_command.duckdns_update

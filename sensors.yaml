@@ -93,3 +93,55 @@
   name: Shelly2 Battery
   state_topic: "shellies/shellyht-F03BCC/sensor/battery"
   unit_of_measurement: "%"
+
+- platform: qbittorrent
+  url: !secret torrent_url
+  username: !secret torrent_uid
+  password: !secret torrent_pass
+
+- platform: rest
+  name: Boiler
+  json_attributes:
+    - state
+    - time_left
+    - time_on
+    - auto_shutdown
+    - power_consumption
+    - electric_current
+  resource: !secret boiler_url
+  value_template: "{{ value_json.state }}"
+- platform: template
+  sensors:
+    boiler_power:
+      friendly_name: "boiler_power"
+      value_template: "{{ state_attr('sensor.Boiler', 'power_consumption') }}"
+    boiler_amp:
+      friendly_name: "boiler_amp"
+      value_template: "{{ state_attr('sensor.Boiler', 'electric_current') }}"
+    boiler_on_time:
+      friendly_name: "boiler_on_time"
+      value_template: "{{ state_attr('sensor.Boiler', 'time_on') }}"
+
+- platform: rest
+  name: rm_heater
+  json_attributes:
+    - state
+    - time_left
+    - time_on
+    - auto_shutdown
+    - power_consumption
+    - electric_current
+  resource: !secret rm_heater_url
+  value_template: "{{ value_json.state }}"
+- platform: template
+  sensors:
+    rm_heater_power:
+      friendly_name: "boiler_power"
+      value_template: "{{ state_attr('sensor.rm_heater', 'power_consumption') }}"
+    rm_heater_amp:
+      friendly_name: "boiler_amp"
+      value_template: "{{ state_attr('sensor.rm_heater', 'electric_current') }}"
+    rm_heater_on_time:
+      friendly_name: "boiler_on_time"
+      value_template: "{{ state_attr('sensor.rm_heater', 'time_on') }}"
+

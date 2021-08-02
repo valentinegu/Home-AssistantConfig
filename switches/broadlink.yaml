@@ -50,7 +50,7 @@
       - name: pantry
         command_on: 'sgw0AA0kJA0NJCQNJA0NJCQNJA0NJCQNJA0kDSQNDSQkDSQNJA0NJCQNDSQNJA0kDSQNJAwAAW8AAAAA'
         command_off: 'sgw0ACQNDSQNJA0kDSQkDQ0kJA0kDSQNDSQkDQ0kJA0kDSQNDSQNJA0kDSQNJA0kJA0NJAwAAW8AAAAA'
-#        office_light:
+#      - name: office_light
 #        command_on: 'sgw0ACQNDSQkDQ0kDSQNJA0kJA0NJCQNDSQNJCQNDSQkDQ0kDSQNJCQNDSQNJCQNJA0NJAwAAW8AAAAA'
 #        command_off: 'sgw0ACQNJA0kDSQNJA0kDSQNDSQkDQ0kDSQNJA0kJA0kDQ0kDSQkDQ0kJA0kDQ0kJA0NJAwAAW8AAAAA'
       - name: ariels_room
@@ -60,6 +60,21 @@
         command_on: 'sgw0AA0kJA0kDQ0kDSQNJCQNJA0NJA0kDSQkDQ0kJA0kDQ0kJA0kDQ0kDSQNJCQNJA0NJAwAAW8AAAAA'
         command_off: 'sgw0ACQNDSQNJCQNDSQNJCQNDSQNJA0kJA0kDQ0kDSQkDSQNJA0NJA0kDSQkDSQNDSQNJAwAAW8AAAAA'
 
+  - platform: template
+    switches:
+      office_light:
+        friendly_name: "Office Light"
+        value_template: "{{ is_state('light.0x90fd9ffffeee2f38', 'on') }}"
+        turn_on:
+          service: remote.send_command
+          data:
+            entity_id: remote.lr_broadlink_remote
+            command: b64:sgw0ACQNDSQkDQ0kDSQNJA0kJA0NJCQNDSQNJCQNDSQkDQ0kDSQNJCQNDSQNJCQNJA0NJAwAAW8AAAAA
+        turn_off:
+          service: remote.send_command
+          data:
+            entity_id: remote.lr_broadlink_remote
+            command: b64:sgw0ACQNJA0kDSQNJA0kDSQNDSQkDQ0kDSQNJA0kJA0kDQ0kDSQkDQ0kJA0kDQ0kJA0NJAwAAW8AAAAA==
 
 
 #Bedroom BroadLink

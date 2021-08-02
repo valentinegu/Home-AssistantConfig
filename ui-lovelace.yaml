@@ -82,9 +82,10 @@ views:
        title: Boiler
        show_header_toggle: false
        entities:
-         - switch.watter_heater
-         - sensor.watter_heater_watts
-         - sensor.watter_heater_amps
+         - sensor.boiler
+         - sensor.boiler_power
+         - sensor.boiler_amp
+         - sensor.boiler_on_time
          - input_select.watter_heater_timer_select
          - script.boiler_timer_on
 
@@ -92,10 +93,11 @@ views:
        title: Bathroom Heater
        show_header_toggle: false
        entities:
-         - switch.room_heater
+         - sensor.rm_heater
          - binary_sensor.0x00158d0003d0c033_contact
-         - sensor.room_heater_watts
-         - sensor.room_heater_amps
+         - sensor.rm_heater_power
+         - sensor.rm_heater_amp
+         - sensor.rm_heater_on_time
          - input_select.room_heater_timer_select
          - script.bathroom_heater_timer_on 
 
@@ -119,8 +121,9 @@ views:
      - weather.home
      - sun.sun
      - sensor.season
-     - sensor.transmission_active_torrents
-     - sensor.transmission_status
+     - sensor.qbittorrent_down_speed
+     - sensor.qbittorrent_up_speed
+     - sensor.qbittorrent_status
  
     cards:
      - type: entities
@@ -141,10 +144,14 @@ views:
        title: Temperture
        show_header_toggle: false
        entities:
-        - sensor.shelly1_temperature
-        - sensor.shelly1_humidity
-        - sensor.shelly2_temperature
-        - sensor.shelly2_humidity
+        - entity: sensor.shelly1_temperature
+          name: "Nursery Temp"
+        - entity: sensor.shelly1_humidity
+          name: "Nursery Humidity"
+        - entity: sensor.shelly2_temperature
+          name: "Living Room Temp"
+        - entity: sensor.shelly2_humidity
+          name: "Living Room Humidity"
 #     - type: entities 
 #       title: DNS Stats
 #       show_header_toggle: false
@@ -171,11 +178,15 @@ views:
         - sensor.ping_google_average
         - sensor.ping_fw_average
 
-     - type: history-graph
-       title: Torrent Status
-       entities:
-        - sensor.transmission_down_speed
-        - sensor.transmission_up_speed
+     - type: sensor
+       name: Internet Download 
+       entity: sensor.archer_ax20_kib_s_received
+       graph: line
+
+     - type: sensor
+       name: Internet Upload 
+       entity: sensor.archer_ax20_kib_s_sent
+       graph: line
 
 
      - type: picture-entity
