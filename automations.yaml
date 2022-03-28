@@ -22,18 +22,6 @@
   action:
   - entity_id: switch.living_room_lamp
     service: switch.turn_on
-  # - delay: '[object Object]'
-# - alias: Evening2
-#   initial_state: false
-#   trigger:
-#     platform: sun
-#     event: sunset
-#     offset: -00:45:00
-#   action:
-#   - service: switch.turn_on
-#     entity_id: switch.ariel_lamp
-#   - delay:
-#       milliseconds: 500
 - id: lr_ac_changes
   alias: lr_ac_changes
   trigger:
@@ -49,10 +37,7 @@
     state: 'on'
   - service: script.tornado_ac_change_state
     data_template:
-      selected_broadlink: 'remote.lr_broadlink_remote'
-      selected_mode: '{{ states.input_select.lr_ac_mode.state }}'
-      selected_fan: '{{ states.input_select.lr_ac_fan.state }}'
-      selected_temp: '{{ states.sensor.lr_ac_temp_sensor.state }}'
+      selected_broadlink: remote.lr_broadlink_remote
 - id: or_ac_changes
   alias: or_ac_changes
   trigger:
@@ -68,10 +53,7 @@
     state: 'on'
   - service: script.tornado_ac_change_state
     data_template:
-      selected_broadlink: 'remote.or_broadlink_remote'
-      selected_mode: '{{ states.input_select.or_ac_mode.state }}'
-      selected_fan: '{{ states.input_select.or_ac_fan.state }}'
-      selected_temp: '{{ states.sensor.or_ac_temp_sensor.state }}'
+      selected_broadlink: remote.or_broadlink_remote
 - id: nr_ac_changes
   alias: nr_ac_changes
   trigger:
@@ -83,14 +65,11 @@
     entity_id: input_select.nr_ac_fan
   action:
   - condition: state
-    entity_id: switch.or_nc_state
+    entity_id: switch.nr_ac_state
     state: 'on'
-  - service: script.tornado_nc_change_state
+  - service: script.tornado_ac_change_state
     data_template:
-      selected_broadlink: 'remote.ar_broadlink_remote'
-      selected_mode: '{{ states.input_select.nr_ac_mode.state }}'
-      selected_fan: '{{ states.input_select.nr_ac_fan.state }}'
-      selected_temp: '{{ states.sensor.nr_ac_temp_sensor.state }}'
+      selected_broadlink: remote.ar_broadlink_remote
 - id: duckdns_update
   alias: duckdns_update
   trigger:
@@ -98,3 +77,22 @@
     platform: time_pattern
   action:
   - service: rest_command.duckdns_update
+- id: qbt_pause
+  alias: qbt_pause
+  trigger:
+  - hours: /2
+    platform: time_pattern
+  action:
+  - service: shell_command.qbt_auto_pause
+- id: '1648492140847'
+  alias: talaviad
+  description: Update Tal and Aviad dates
+  trigger:
+  - platform: homeassistant
+    event: start
+  - platform: time
+    at: '23:00'
+  condition: []
+  action:
+  - service: python_script.talnaviad_dates
+  mode: single

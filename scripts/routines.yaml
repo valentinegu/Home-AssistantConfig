@@ -1,85 +1,85 @@
 good_night:
   alias: Good Night
   sequence:
-  - service: script.turn_off
-    entity_id: script.living_room_tv_off
-  - delay:
-      seconds: 1
-  - service: switch.turn_off
-    entity_id: switch.living_room_lamp
-  - delay:
-      seconds: 1
-  - service: script.turn_on
-    entity_id: script.livingroom_ac_off
-  - delay:
-      seconds: 1
-  - service: script.turn_on
-    entity_id: script.office_ac_off
-  - delay:
-      seconds: 1
-  - service: script.turn_on
-    entity_id: script.office_ac_off
-  - delay:
-      seconds: 1
-  - service: switch.turn_off
-    entity_id: switch.lr_entry_light
-  - delay:
-      seconds: 1
-  - service: switch.turn_off
-    entity_id: switch.lr_light1
-  - delay:
-      seconds: 1
-  - service: switch.turn_off
-    entity_id: switch.lr_light2
-  - delay:
-      seconds: 1
-  - service: switch.turn_off
-    entity_id: switch.kitchen1
-  - delay:
-      seconds: 1
-  - service: switch.turn_off
-    entity_id: switch.kitchen2
-  - delay:
-      seconds: 1
+    - service: script.turn_off
+      entity_id: script.living_room_tv_off
+    - delay:
+        seconds: 1
+    - service: switch.turn_off
+      entity_id: switch.living_room_lamp
+    - delay:
+        seconds: 1
+    - service: remote.send_command
+      data:
+        entity_id: remote.lr_broadlink_remote
+        command: b64:JgBgAQABK5UROBE4EhISEhETERMRExE4ExISNxE4ERMRExETEhISEhISERMROBETEhIRExETERMRExI3EhIUEBETERMRExI3EhISEhETERMRExETEhISEhETERMRExETEhISEhETERMUAAEKERMRExETERMSEhISERMROBETERMSEhISEhIRExETERMRExISEhIRExETERMRExISEhISEhETERMRExETEhISEhETERMRExETEhISEhISERMRExETERMSEhISERMRExETETgSEhI3ETgROBETERMRExI3EjgQExE4EjcSEhETERMTAAELERMRExETEhISEhISERMRExE4ERMSEhISERMRExETERMSEhISERMRExISERMRExETERMSEhISERMRExETERMSEhISERMRExETERMROBISEhIRExETERMROBI3EhIRExETETgRExETEjcSNxE4ERMRExEADQUAAAAAAAAAAA==
+    - delay:
+        seconds: 1
+    - service: remote.send_command
+      data:
+        entity_id: remote.or_broadlink_remote
+        command: b64:JgBgAQABK5UROBE4EhISEhETERMRExE4ExISNxE4ERMRExETEhISEhISERMROBETEhIRExETERMRExI3EhIUEBETERMRExI3EhISEhETERMRExETEhISEhETERMRExETEhISEhETERMUAAEKERMRExETERMSEhISERMROBETERMSEhISEhIRExETERMRExISEhIRExETERMRExISEhISEhETERMRExETEhISEhETERMRExETEhISEhISERMRExETERMSEhISERMRExETETgSEhI3ETgROBETERMRExI3EjgQExE4EjcSEhETERMTAAELERMRExETEhISEhISERMRExE4ERMSEhISERMRExETERMSEhISERMRExISERMRExETERMSEhISERMRExETERMSEhISERMRExETERMROBISEhIRExETERMROBI3EhIRExETETgRExETEjcSNxE4ERMRExEADQUAAAAAAAAAAA==
+    - delay:
+        seconds: 1
+    - service: switch.turn_off
+      entity_id: switch.lr_entry_light
+    - delay:
+        seconds: 1
+    - service: switch.turn_off
+      entity_id: switch.lr_light1
+    - delay:
+        seconds: 1
+    - service: switch.turn_off
+      entity_id: switch.lr_light2
+    - delay:
+        seconds: 1
+    - service: switch.turn_off
+      entity_id: switch.kitchen1
+    - delay:
+        seconds: 1
+    - service: switch.turn_off
+      entity_id: switch.kitchen2
+    - delay:
+        seconds: 1
 
 living_room_tv_off:
   sequence:
     - condition: state
       entity_id: media_player.living_room_tv
-      state: 'on'
+      state: "on"
     - service: media_player.turn_off
       entity_id: media_player.living_room_tv
 
 living_room_pause_playback:
   alias: "Pause TV Playback"
   sequence:
-  - service_template: >
-      {% if state_attr("media_player.living_room_tv", "source") == "HDMI 3" %} 
-        switch.turn_off
-      {% elif state_attr("media_player.living_room_tv", "source") == "Netflix" %}
-        media_player.media_pause
-      {% endif %}
-    data_template:
-      entity_id: >
-        {% if state_attr("media_player.living_room_tv", "source") == "HDMI 3" %}
-          switch.yes_play_pause
+    - service_template: >
+        {% if state_attr("media_player.living_room_tv", "source") == "HDMI 3" %} 
+          switch.turn_off
         {% elif state_attr("media_player.living_room_tv", "source") == "Netflix" %}
-          media_player.living_room_tv
+          media_player.media_pause
         {% endif %}
+      data_template:
+        entity_id: >
+          {% if state_attr("media_player.living_room_tv", "source") == "HDMI 3" %}
+            switch.yes_play_pause
+          {% elif state_attr("media_player.living_room_tv", "source") == "Netflix" %}
+            media_player.living_room_tv
+          {% endif %}
 
 living_room_resume_playback:
   alias: "Resume TV Playback"
   sequence:
-  - service_template: >
-      {% if state_attr("media_player.living_room_tv", "source") == "HDMI 3" %}
-        switch.turn_on
-      {% elif state_attr("media_player.living_room_tv", "source") == "Netflix" %}
-        media_player.media_play
-      {% endif %}
-    data_template:
-      entity_id: >
+    - service_template: >
         {% if state_attr("media_player.living_room_tv", "source") == "HDMI 3" %}
-          switch.yes_play_pause
+          switch.turn_on
         {% elif state_attr("media_player.living_room_tv", "source") == "Netflix" %}
-          media_player.living_room_tv
+          media_player.media_play
         {% endif %}
+      data_template:
+        entity_id: >
+          {% if state_attr("media_player.living_room_tv", "source") == "HDMI 3" %}
+            switch.yes_play_pause
+          {% elif state_attr("media_player.living_room_tv", "source") == "Netflix" %}
+            media_player.living_room_tv
+          {% endif %}

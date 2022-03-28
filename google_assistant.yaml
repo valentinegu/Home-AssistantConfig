@@ -4,15 +4,15 @@
   report_state: true
   expose_by_default: false
   entity_config:
-    switch.ariel_lamp:
+    switch.0x5c0272fffe0362bc:
         expose: true
-    switch.room_heater:
+    switch.rm_heater:
         expose: true
     switch.alice_bed_light:
         expose: true
     switch.val_bed_light:
         expose: true
-    switch.watter_heater:
+    switch.boiler:
         expose: true
     switch.bf27199e8877d13631xsqm:
         expose: true

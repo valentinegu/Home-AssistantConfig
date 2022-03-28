@@ -55,7 +55,7 @@
               seconds: 1
           - service: script.tornado_ac_change_state
             data_template:
-              selected_broadlink: 'remote.or_broadlink_remote'
+              selected_broadlink: 'remote.ar_broadlink_remote'
               selected_mode: '{{ states.input_select.nr_ac_mode.state }}'
               selected_fan: '{{ states.input_select.nr_ac_fan.state }}'
               selected_temp: '{{ states.sensor.nr_ac_temp_sensor.state }}'
@@ -71,19 +71,19 @@
         turn_on:
           - service: remote.send_command
             data:
-              entity_id: remote.or_broadlink_remote
+              entity_id: remote.br_broadlink_remote
               command: "b64:JgDoAGRlZpETNhMSEzUUERMSEjYTNhMSExETNhM2EzYSExETEDkQFBAVDxUQFBAUEBUPOREUEBQQFBAVEBQQFBAUEBUQOBEUEDgROBEUEBUQFBAUEBQQFRA4ERQQOBEUEDkRNxIUEBQQFBAVEDkQFBAUEDgRFBA4EjcSFBAUEBQQOBEVEDgRORAUEBQQOBEVEBQQOBETETgRFBEUEBMRFBAVEBQQExETERUQFBAUEBQQFBETERQQFBAVEBQQFBAUEBUQFBAUEBQQFRAUEBQQFQ8VEDgRFBA5EBQQOBI3EhQQFBA5ERMRFBAADQU="
-          - delay:
-              seconds: 1
-          - service: script.br_ac_check_state_script
-            data_template:
-              selected_broadlink: 'remote.br_broadlink_remote'
-              selected_mode: '{{ states.input_select.or_ac_mode.state }}'
-              selected_fan: '{{ states.input_select.or_ac_fan.state }}'
-              selected_temp: '{{ states.sensor.or_ac_temp_sensor.state }}'
+          # - delay:
+          #     seconds: 1
+          # - service: script.br_ac_check_state_script
+          #   data_template:
+          #     selected_broadlink: 'remote.br_broadlink_remote'
+          #     selected_mode: '{{ states.input_select.or_ac_mode.state }}'
+          #     selected_fan: '{{ states.input_select.or_ac_fan.state }}'
+          #     selected_temp: '{{ states.sensor.or_ac_temp_sensor.state }}'
         turn_off:
           - service: remote.send_command
             data:
-              entity_id: remote.or_broadlink_remote
+              entity_id: remote.br_broadlink_remote
               command: "b64:JgDoAGRmZpEROBISEjcSExMREjcSNxISEhMRExMREhISExETEjcSEhITERMSEhISEjcUNhETEhISEhITExESEhITExERExISEhMRExISEhISNxITERMSNxI3EhMROBETEjcSNxISEhMRExISEjcUNRITETgSNxI3EhISExE4ERMUNRI3EhMRExETEhIUNRI3EhMROBQ1EjcSEhQRERMSEhISEhMTERISFBERExISEhISExETEhISEhITExESEhQRERMTERQQEhMTERISFBAUERETEjcSEhI3FBETERQQEhIUNhMREhISEhQADQU="
 

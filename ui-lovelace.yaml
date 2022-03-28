@@ -1,240 +1,379 @@
 title: My Awesome Home
 views:
-    # View tab title.
+  # View tab title.
   - title: Home
     cards:
-     - type: glance
-       show_state: false
-       entities:
-       - entity: script.good_night
-         icon: mdi:weather-night
-         tap_action: 
-           action: toggle
+      - type: glance
+        show_state: false
+        entities:
+          - entity: script.good_night
+            icon: mdi:weather-night
+            tap_action:
+              action: toggle
 
-     - type: glance
-       title: Lights
-       columns: 4
-       entities:
-        - entity: switch.lr_entry_light
-          tap_action:
-            action: toggle
-        - entity: switch.lr_light1
-          tap_action:
-            action: toggle
-        - entity: switch.lr_light2
-          tap_action:
-            action: toggle
-        - entity: switch.living_room_lamp
-          name: "Lamp"
-          tap_action:
-            action: toggle
-        - entity: switch.kitchen1
-          tap_action:
-            action: toggle
-        - entity: switch.kitchen2
-          tap_action:
-            action: toggle
-        - entity: switch.toilet
-          tap_action:
-            action: toggle
-        - entity: switch.bathroom
-          tap_action:
-            action: toggle
-        - entity: switch.alice_bed_light
-          name: "Alice Lamp"
-          tap_action: 
-            action: toggle
-        - entity: switch.val_bed_light
-          name: "Val Lamp"
-          tap_action:
-            action: toggle
-        - entity: switch.pantry
-          tap_action:
-            action: toggle
-        - entity: switch.office_light
-          tap_action:
-            action: toggle
-        - entity: switch.ariels_room
-          tap_action:
-            action: toggle
-        - entity: switch.washer_light
-          tap_action:
-            action: toggle
-        - entity: switch.ariel_lamp
-          tap_action:
-            action: toggle
+      - type: glance
+        title: Lights
+        columns: 4
+        entities:
+          - entity: switch.0x84fd27fffe5c0c82
+            tap_action:
+              action: toggle
+          - entity: switch.lr_light1
+            tap_action:
+              action: toggle
+          - entity: switch.lr_light2
+            tap_action:
+              action: toggle
+          - entity: switch.living_room_lamp
+            name: "Lamp"
+            tap_action:
+              action: toggle
+          - entity: switch.kitchen1
+            tap_action:
+              action: toggle
+          - entity: switch.kitchen2
+            tap_action:
+              action: toggle
+          - entity: switch.toilet
+            tap_action:
+              action: toggle
+          - entity: switch.bathroom
+            tap_action:
+              action: toggle
+          - entity: switch.alice_bed_light
+            name: "Alice Lamp"
+            tap_action:
+              action: toggle
+          - entity: switch.val_bed_light
+            name: "Val Lamp"
+            tap_action:
+              action: toggle
+          - entity: switch.pantry
+            tap_action:
+              action: toggle
+          - entity: switch.office_light
+            tap_action:
+              action: toggle
+          - entity: switch.ariels_room
+            tap_action:
+              action: toggle
+          - entity: switch.washer_light
+            tap_action:
+              action: toggle
+          - entity: switch.0x5c0272fffe0362bc
+            tap_action:
+              action: toggle
 
+      - type: entities
+        show_header_toggle: false
+        title: Living Room
+        entities:
+          - vacuum.xiaomi_vacuum_cleaner
+          - sensor.shelly2_temperature
+          - sensor.shelly2_humidity
 
-     - type: entities
-       show_header_toggle: false
-       title: Living Room
-       entities:
-        - vacuum.xiaomi_vacuum_cleaner
-        - sensor.shelly2_temperature
-        - sensor.shelly2_humidity
-        - script.livingroom_ac_20c
-        - script.livingroom_ac_off
+      - type: media-control
+        entity: media_player.living_room_tv
 
-     - type: media-control
-       entity: media_player.living_room_tv
+      - type: entities
+        title: Boiler
+        show_header_toggle: false
+        entities:
+          - switch.boiler
+          - sensor.boiler
+          - sensor.boiler_power
+          - sensor.boiler_amp
+          - sensor.boiler_on_time
+          - input_select.watter_heater_timer_select
+          - script.boiler_timer_on
 
-     - type: entities
-       title: Boiler
-       show_header_toggle: false
-       entities:
-         - sensor.boiler
-         - sensor.boiler_power
-         - sensor.boiler_amp
-         - sensor.boiler_on_time
-         - input_select.watter_heater_timer_select
-         - script.boiler_timer_on
+      - type: entities
+        title: Bathroom Heater
+        show_header_toggle: false
+        entities:
+          - switch.rm_heater
+          - sensor.rm_heater
+          - binary_sensor.0x00158d0003d0c033_contact
+          - sensor.rm_heater_power
+          - sensor.rm_heater_amp
+          - sensor.rm_heater_on_time
+          - input_select.room_heater_timer_select
+          - script.bathroom_heater_timer_on
 
-     - type: entities
-       title: Bathroom Heater
-       show_header_toggle: false
-       entities:
-         - sensor.rm_heater
-         - binary_sensor.0x00158d0003d0c033_contact
-         - sensor.rm_heater_power
-         - sensor.rm_heater_amp
-         - sensor.rm_heater_on_time
-         - input_select.room_heater_timer_select
-         - script.bathroom_heater_timer_on 
-
-     - type: glance
-       title: Bedroom
-       entities:
-        - entity: switch.bedroom_ac
-          tap_action: 
-            action: toggle
-        - entity: switch.alice_bed_light
-          name: "Bed Lamp"
-          tap_action: 
-            action: toggle
-        - entity: switch.val_bed_light
-          tap_action: 
-            action: toggle
-
+      - type: glance
+        title: Bedroom
+        entities:
+          - entity: switch.bedroom_ac
+            tap_action:
+              action: toggle
+          - entity: switch.alice_bed_light
+            name: "Bed Lamp"
+            tap_action:
+              action: toggle
+          - entity: switch.val_bed_light
+            tap_action:
+              action: toggle
 
   - title: Environment
     badges:
-     - weather.home
-     - sun.sun
-     - sensor.season
-     - sensor.qbittorrent_down_speed
-     - sensor.qbittorrent_up_speed
-     - sensor.qbittorrent_status
- 
+      - weather.home
+      - sun.sun
+      - sensor.season
+      - sensor.qbittorrent_down_speed
+      - sensor.qbittorrent_up_speed
+      - sensor.qbittorrent_status
+
     cards:
-     - type: entities
-       title: HA Status
-       show_header_toggle: false
-       entities:
-        - sensor.last_boot
-        # - sensor.processor_use
-        - sensor.memory_use_percent
-        - sensor.disk_use_percent_home
-        - sensor.network_throughput_in_eth0 
-        - sensor.network_throughput_out_eth0
-        - sensor.network_in_eth0
-        - sensor.network_out_eth0
-        - switch.living_room_pc
+      - type: entities
+        title: HA Status
+        show_header_toggle: false
+        entities:
+          - sensor.last_boot
+          - sensor.memory_use_percent
+          - sensor.disk_use_percent_home
+          - sensor.network_throughput_in_eth0
+          - sensor.network_throughput_out_eth0
+          - sensor.network_in_eth0
+          - sensor.network_out_eth0
+          - switch.living_room_pc
 
-     - type: entities
-       title: Temperture
-       show_header_toggle: false
-       entities:
-        - entity: sensor.shelly1_temperature
-          name: "Nursery Temp"
-        - entity: sensor.shelly1_humidity
-          name: "Nursery Humidity"
-        - entity: sensor.shelly2_temperature
-          name: "Living Room Temp"
-        - entity: sensor.shelly2_humidity
-          name: "Living Room Humidity"
-#     - type: entities 
-#       title: DNS Stats
-#       show_header_toggle: false
-#       entities:                 
-#          - entity: sensor.pi_hole_dns_queries_today
-#            name: Total Queries
-#            type: sensor         
-#          - entity: sensor.pi_hole_ads_blocked_today
-#            graph: line   
-#            name: Queries Blocked
-#            type: sensor
-#          - entity: sensor.pi_hole_ads_percentage_blocked_today
-#            graph: line          
-#            name: Percent Blocked
-#            type: sensor  
-#          - entity: sensor.pi_hole_domains_blocked
-#            graph: line
-#            name: Domains on Blocklist
-#            type: sensor
+      - type: entities
+        title: Temperture
+        show_header_toggle: false
+        entities:
+          - entity: sensor.shelly1_temperature
+            name: "Nursery Temp"
+          - entity: sensor.shelly1_humidity
+            name: "Nursery Humidity"
+          - entity: sensor.shelly2_temperature
+            name: "Living Room Temp"
+          - entity: sensor.shelly2_humidity
+            name: "Living Room Humidity"
 
-     - type: history-graph
-       title: Network Status
-       entities:
-        - sensor.ping_google_average
-        - sensor.ping_fw_average
+      - type: history-graph
+        title: Network Status
+        entities:
+          - sensor.ping_google_average
+          - sensor.ping_fw_average
 
-     - type: sensor
-       name: Internet Download 
-       entity: sensor.archer_ax20_kib_s_received
-       graph: line
+      - type: sensor
+        name: Internet Download
+        entity: sensor.archer_ax20_kib_s_received
+        graph: line
 
-     - type: sensor
-       name: Internet Upload 
-       entity: sensor.archer_ax20_kib_s_sent
-       graph: line
-
-
-     - type: picture-entity
-       title: Camera
-       #camera_image: camera.camera_c200_rtsp
-       camera_view: live
-       entity: camera.camera_c200_rtsp
-
+      - type: sensor
+        name: Internet Upload
+        entity: sensor.archer_ax20_kib_s_sent
+        graph: line
 
   - title: AC Controls
     cards:
-     - type: entities
-       title: Living Room AC
-       show_header_toggle: false
-       entities:
-        - switch.lr_ac_state
-        - sensor.lr_ac_temp_sensor
-        - cover.lr_ac_temp_cover
-        - input_select.lr_ac_mode
-        - input_select.lr_ac_fan
+      - type: entities
+        title: Living Room AC
+        show_header_toggle: false
+        entities:
+          - switch.lr_ac_state
+          - sensor.lr_ac_temp_sensor
+          - cover.lr_ac_temp_cover
+          - input_select.lr_ac_mode
+          - input_select.lr_ac_fan
 
-     - type: entities
-       title: Office AC
-       show_header_toggle: false
-       entities:
-        - switch.or_ac_state
-        - sensor.or_ac_temp_sensor
-        - cover.or_ac_temp_cover
-        - input_select.or_ac_mode
-        - input_select.or_ac_fan
+      - type: entities
+        title: Office AC
+        show_header_toggle: false
+        entities:
+          - switch.or_ac_state
+          - sensor.or_ac_temp_sensor
+          - cover.or_ac_temp_cover
+          - input_select.or_ac_mode
+          - input_select.or_ac_fan
 
-     - type: entities
-       title: Bedroom AC
-       show_header_toggle: false
-       entities:
-        - switch.br_ac_state
-        - sensor.br_ac_temp_sensor
-        - cover.br_ac_temp_cover
-        - input_select.br_ac_mode
-        - input_select.br_ac_fan
+      - type: entities
+        title: Bedroom AC
+        show_header_toggle: false
+        entities:
+          - switch.br_ac_state
+          - sensor.br_ac_temp_sensor
+          - cover.br_ac_temp_cover
+          - input_select.br_ac_mode
+          - input_select.br_ac_fan
 
-     - type: entities
-       title: Ariels AC
-       show_header_toggle: false
-       entities:
-        - switch.nr_ac_state
-        - sensor.nr_ac_temp_sensor
-        - cover.nr_ac_temp_cover
-        - input_select.nr_ac_mode
-        - input_select.nr_ac_fan
+      - type: entities
+        title: Ariels AC
+        show_header_toggle: false
+        entities:
+          - switch.nr_ac_state
+          - sensor.nr_ac_temp_sensor
+          - cover.nr_ac_temp_cover
+          - input_select.nr_ac_mode
+          - input_select.nr_ac_fan
 
+  - title: Media
+    cards:
+      - type: vertical-stack
+        title: TV
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: button
+                icon: mdi:power
+                name: tv_on_off
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: media_player.toggle
+                  service_data:
+                    entity_id: media_player.living_room_tv
+          - type: horizontal-stack
+            cards:
+              - type: button
+                icon: mdi:play
+                name: tv_play_btn
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: webostv.button
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    button: "PLAY"
+              - type: button
+                icon: mdi:arrow-up
+                name: tv_up_btn
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: webostv.button
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    button: "UP"
+              - type: button
+                icon: mdi:pause
+                name: tv_pause_btn
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: webostv.button
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    button: "PAUSE"
+          - type: horizontal-stack
+            cards:
+              - type: button
+                icon: mdi:arrow-left
+                name: tv_left_btn
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: webostv.button
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    button: "LEFT"
+              - type: button
+                icon: mdi:keyboard-return
+                name: tv_enter_btn
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: webostv.button
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    button: "ENTER"
+              - type: button
+                icon: mdi:arrow-right
+                name: tv_right_btn
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: webostv.button
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    button: "RIGHT"
+          - type: horizontal-stack
+            cards:
+              - type: button
+                icon: mdi:exit-to-app
+                name: tv_exit_btn
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: webostv.button
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    button: "EXIT"
+              - type: button
+                icon: mdi:arrow-down
+                name: tv_back_btn
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: webostv.button
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    button: "DOWN"
+              - type: button
+                icon: mdi:keyboard-esc
+                name: tv_back_btn
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: webostv.button
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    button: "BACK"
+          - type: horizontal-stack
+            cards:
+              - type: button
+                icon: mdi:netflix
+                name: tv_netflix_src
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: media_player.select_source
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    source: "NETFLIX"
+              - type: button
+                icon: mdi:apple
+                name: tv_apple_src
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: media_player.select_source
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    source: "Apple TV"
+              - type: button
+                icon: mdi:plex
+                name: tv_plex_svc
+                show_state: false
+                show_name: false
+                tap_action:
+                  action: call-service
+                  service: media_player.select_source
+                  service_data:
+                    entity_id: media_player.living_room_tv
+                    source: "Plex"
+
+      - type: media-control
+        entity: media_player.living_room_tv
+
+      - type: entities
+        entities:
+          - name: Date
+            entity: input_select.tal_aviad
+          - name: Play
+            entity: script.tal_and_aviad
+          - name: pause
+            entity: media_player.living_room_speaker

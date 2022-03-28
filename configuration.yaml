@@ -1,38 +1,33 @@
-
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   login_attempts_threshold: 3
-#  ssl_certificate: !secret ssl_cert
-#  ssl_key: !secret ssl_key
+  #  ssl_certificate: !secret ssl_cert
+  #  ssl_key: !secret ssl_key
   ip_ban_enabled: True
   use_x_forwarded_for: true
   trusted_proxies:
     - 127.0.0.1
     - 172.17.0.0/16
 
-
-
-
 logger:
   default: warning
-#  logs:
-  #  homeassistant.components.rest_command: debug
+  logs:
+  #   homeassistant.components.shell_command: debug
+    homeassistant.components.rest_command: debug
   #   homeassistant.components.python_script: debug
-#    homeassistant.components.remote: debug
-#    homeassistant.components.script: debug
-#    homeassistant.components.switch: debug
-#    homeassistant.components.input_select: debug
-#    homeassistant.components.input_boolean: debug
-#    homeassistant.components.input_text: debug
-#    homeassistant.components.cover: debug
-#    homeassistant.components.sensor: debug
-#    homeassistant.components.group: debug
-#    homeassistant.components.automation: debug
-#    homeassistant.components.script: debug
-
+  #   homeassistant.components.remote: debug
+  #   homeassistant.components.script: debug
+  #   homeassistant.components.switch: debug
+  #   homeassistant.components.input_select: debug
+  #   homeassistant.components.input_boolean: debug
+  #   homeassistant.components.input_text: debug
+  #   homeassistant.components.cover: debug
+  #   homeassistant.components.sensor: debug
+  #   homeassistant.components.group: debug
+  #   homeassistant.components.automation: debug
 
 python_script:
 
@@ -58,10 +53,14 @@ binary_sensor:
     payload_on: "true"
     payload_off: "false"
 
-camera:
- - platform: ffmpeg
-   name: Camera C200 rtsp
-   input: !secret tapo_host
+# camera:
+#  - platform: ffmpeg
+#    name: Camera C200 rtsp
+#    input: !secret tapo_host
+#  - platform: generic
+#    name: rpi_cam
+#    still_image_url: !secret pi_cam_url
+#    verify_ssl: false
 
 upnp:
 
@@ -71,16 +70,15 @@ homekit:
   - filter:
       include_entities:
         - binary_sensor.0x00158d0003d0c033_contact
-        - camera.camera_c200_rtsp
         - input_select.br_ac_mode
         - input_select.lr_ac_mode
         - input_select.nr_ac_mode
         - input_select.or_ac_mode
         - input_select.room_heater_timer_select
         - input_select.watter_heater_timer_select
-        - media_player.living_room_tv
-        - script.bathroom_heater_timer_on
-        - script.boiler_timer_on
+        # - media_player.living_room_tv
+        - switch.boiler
+        - switch.rm_heater
         - script.good_night
         - sensor.shelly1_humidity
         - sensor.shelly1_temperature
@@ -109,7 +107,7 @@ homekit:
         - switch.val_bed_light
         - switch.washer_light
         - switch.watter_heater
-        - vacuum.xiaomi_vacuum_cleaner
+        # - vacuum.xiaomi_vacuum_cleaner
 
 tts:
   - platform: google_translate
@@ -124,23 +122,20 @@ mqtt:
   discovery: true
   discovery_prefix: homeassistant
   birth_message:
-    topic: 'hass/status'
-    payload: 'online'
+    topic: "hass/status"
+    payload: "online"
   will_message:
-    topic: 'hass/status'
-    payload: 'offline'
-
-
+    topic: "hass/status"
+    payload: "offline"
 
 vacuum:
   - platform: xiaomi_miio
     host: !secret vacuum_ip
     token: !secret vacuum_token
 
-
-
 shell_command:
-  turn_off_lr_pc: !secret shell_cmd 
+  turn_off_lr_pc: !secret shell_cmd
+  qbt_auto_pause: !secret qbt_auto_pause
 
 webostv:
   host: !secret tv_ip
@@ -153,27 +148,44 @@ webostv:
   customize:
     sources:
       - netflix
-      - HDMI 3
+      - HDMI 1
       - Plex
 
 rest_command:
   duckdns_update:
     url: !secret duckdns_url
+  boiler_turnon:
+    url: !secret boiler_on_url
+    method: POST
+    payload: '{"minutes": {{states(''input_select.watter_heater_timer_select'')}}}'
+    content_type: "application/json"
+  boiler_turnoff:
+    url: !secret boiler_off_url
+    method: POST
+  rm_heater_turnon:
+    url: !secret rm_heater_on_url
+    method: POST
+    payload: '{ "minutes": {{states(''input_select.room_heater_timer_select'')}}}'
+    content_type: "application/json"
+  rm_heater_turnoff:
+    url: !secret rm_heater_off_url
+    method: POST
 
-
- #switch: !include switches.yaml
-switch: !include_dir_merge_list switches/
- #media_player: !include media_players.yaml
+switch:
+  !include_dir_merge_list switches/
+  #media_player: !include media_players.yaml
 input_select: !include input_select.yaml
 input_boolean: !include input_boolean.yaml
 input_text: !include input_text.yaml
 sensor: !include sensors.yaml
 cover: !include covers.yaml
-group: !include groups.yaml
- # cloud: !include cloud.yaml
- # google_assistant: !include google_assistant.yaml
+group:
+  !include groups.yaml
+  # cloud: !include cloud.yaml
+google_assistant: !include google_assistant.yaml
 automation: !include automations.yaml
-script: !include_dir_merge_named scripts/
- #script: !include scripts.yaml
+script:
+  !include_dir_merge_named scripts/
+  #script: !include scripts.yaml
 homeassistant:
   customize: !include customize.yaml

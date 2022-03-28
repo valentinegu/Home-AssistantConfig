@@ -39,34 +39,34 @@
     ping_fw_average:
       value_template: "{{ state_attr('binary_sensor.ping_fw', 'round_trip_time_avg') }}"
       unit_of_measurement: ms
-    watter_heater_watts: 
-      friendly_name: Boiler Usage Watt
-      unit_of_measurement: 'W'
-      value_template: >
-        {% if state_attr('switch.watter_heater', 'current_power_watts') %} {{ state_attr('switch.watter_heater', 'current_power_watts') }}
-        {% else %} 0
-        {% endif %}
-    watter_heater_amps:
-      friendly_name: Boiler Usage Amp
-      unit_of_measurement: 'A'
-      value_template: >
-        {% if state_attr('switch.watter_heater', 'current_power_amps') %} {{ state_attr('switch.watter_heater', 'current_power_amps') }}
-        {% else %} 0
-        {% endif %}
-    room_heater_watts:
-      friendly_name: Bathroom Heater usage Watt
-      unit_of_measurement: 'W'
-      value_template: >
-        {% if state_attr('switch.room_heater', 'current_power_watts') %} {{ state_attr('switch.room_heater', 'current_power_watts') }}
-        {% else %} 0
-        {% endif %}
-    room_heater_amps:
-      friendly_name: Bathroom Heater usage Amp
-      unit_of_measurement: 'A'
-      value_template: >
-        {% if state_attr('switch.room_heater', 'current_power_amps') %} {{ state_attr('switch.room_heater', 'current_power_amps') }}
-        {% else %} 0
-        {% endif %}
+    # watter_heater_watts: 
+    #   friendly_name: Boiler Usage Watt
+    #   unit_of_measurement: 'W'
+    #   value_template: >
+    #     {% if state_attr('switch.watter_heater', 'current_power_watts') %} {{ state_attr('switch.watter_heater', 'current_power_watts') }}
+    #     {% else %} 0
+    #     {% endif %}
+    # watter_heater_amps:
+    #   friendly_name: Boiler Usage Amp
+    #   unit_of_measurement: 'A'
+    #   value_template: >
+    #     {% if state_attr('switch.watter_heater', 'current_power_amps') %} {{ state_attr('switch.watter_heater', 'current_power_amps') }}
+    #     {% else %} 0
+    #     {% endif %}
+    # room_heater_watts:
+    #   friendly_name: Bathroom Heater usage Watt
+    #   unit_of_measurement: 'W'
+    #   value_template: >
+    #     {% if state_attr('switch.room_heater', 'current_power_watts') %} {{ state_attr('switch.room_heater', 'current_power_watts') }}
+    #     {% else %} 0
+    #     {% endif %}
+    # room_heater_amps:
+    #   friendly_name: Bathroom Heater usage Amp
+    #   unit_of_measurement: 'A'
+    #   value_template: >
+    #     {% if state_attr('switch.room_heater', 'current_power_amps') %} {{ state_attr('switch.room_heater', 'current_power_amps') }}
+    #     {% else %} 0
+    #     {% endif %}
 
 - platform: mqtt
   name: Shelly1 Humidity

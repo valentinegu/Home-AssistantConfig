@@ -11,9 +11,12 @@
 .google.token
 custom_components
 blueprints
+python_scripts/**
+tts
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
+webostv.conf
 secrets.yaml
 known_devices.yaml
 google.json

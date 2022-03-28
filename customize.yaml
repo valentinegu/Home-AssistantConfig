@@ -25,16 +25,8 @@ script.badroom_ac_2hour:
 switch.tv_onoff:
   icon: mdi:television-classic
   assumed_state: false
-script.livingroom_ac_20c:
-  icon: mdi:air-conditioner
-script.livingroom_ac_off:
-  icon: mdi:air-conditioner
-script.alice_office_ac_off:
-  icon: mdi:air-conditioner
-script.val_office_ac_20c:
-  icon: mdi:air-conditioner
-script.val_office_ac_off:
-  icon: mdi:air-conditioner
+# script.alice_office_ac_off:
+#   icon: mdi:air-conditioner
 group.living_room_switches:
   name: Salon
   assumed_state: false
@@ -71,7 +63,7 @@ person.val_alice:
   hidden: true
 person.valice:
   hidden: true
-switch.lr_entry_light:
+switch.0x84fd27fffe5c0c82:
   friendly_name: Entry Light
   icon: mdi:lightbulb
 switch.office_light:
@@ -92,6 +84,9 @@ switch.kitchen1:
 switch.kitchen2:
   friendly_name: Kitchen Light 2
   icon: mdi:lightbulb
+switch.0x5c0272fffe0362bc:
+  friendly_name: Window Light
+  icon: mdi:lightbulb
 switch.toilet:
   friendly_name: Toilet Light
   icon: mdi:lightbulb
@@ -100,7 +95,7 @@ switch.bathroom:
   icon: mdi:lightbulb
 switch.pantry:
   friendly_name: Pantry Light
-  icon: mdi:lightbulb  
+  icon: mdi:lightbulb
 switch.bf9723b0f9183e958ewpbb:
   name: Mosquito
   icon: mdi:bug
@@ -113,16 +108,16 @@ switch.alice_office_ac_20c:
   hidden: true
 switch.alice_office_ac_25c:
   hidden: true
-switch.alice_office_ac_off:
-  hidden: true
+# switch.alice_office_ac_off:
+#   hidden: true
 switch.mazgan_salon_25c:
   hidden: true
 switch.val_office_ac_20c:
   hidden: true
 switch.val_office_ac_25c:
   hidden: true
-switch.val_office_ac_off:
-  hidden: true
+# switch.val_office_ac_off:
+#   hidden: true
 input_boolean.lr_ac_status:
   friendly_name: Status
   icon: mdi:air-conditioner
@@ -155,4 +150,4 @@ sensor.lumi_lumi_weather_0411a952_1_1026:
 sensor.lumi_lumi_weather_0411a952_1_1029:
   friendly_name: Nursery Humidity
 media_player.living_room_tv:
-  device_class: 'tv'
+  device_class: "tv"
