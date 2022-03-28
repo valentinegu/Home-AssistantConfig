@@ -1,0 +1,9 @@
+tal_and_aviad:
+  alias: "Play Tal and Aviad"
+  sequence:
+    - service: media_player.play_media
+      data:
+        media_content_type: audio/mp3
+        media_content_id: "https://a99.mediacast.co.il/99fm/mediafiles/haboker_full_music_{{ states('input_select.tal_aviad').split(' ')[1].replace('/', '') }}.mp3"
+      target:
+        device_id: f672ffe29746dbed1deb0a62367ed61f
