@@ -11,7 +11,7 @@
 .google.token
 custom_components
 blueprints
-python_scripts/**
+python_scripts/*/*
 tts
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
