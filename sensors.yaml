@@ -109,18 +109,28 @@
     - power_consumption
     - electric_current
   resource: !secret boiler_url
-  value_template: "{{ value_json.state }}"
+  value_template: "OK"
 - platform: template
   sensors:
     boiler_power:
       friendly_name: "boiler_power"
+      unit_of_measurement: kW
       value_template: "{{ state_attr('sensor.Boiler', 'power_consumption') }}"
     boiler_amp:
       friendly_name: "boiler_amp"
+      unit_of_measurement: A
       value_template: "{{ state_attr('sensor.Boiler', 'electric_current') }}"
     boiler_on_time:
       friendly_name: "boiler_on_time"
       value_template: "{{ state_attr('sensor.Boiler', 'time_on') }}"
+    boiler_status:
+      friendly_name: "boiler_state"
+      value_template:  >-
+        {% if state_attr('sensor.boiler', 'state') == 'ON' %}
+          on
+        {% else %}
+          off
+        {% endif %}
 
 - platform: rest
   name: rm_heater
@@ -132,16 +142,26 @@
     - power_consumption
     - electric_current
   resource: !secret rm_heater_url
-  value_template: "{{ value_json.state }}"
+  value_template: "OK"
 - platform: template
   sensors:
     rm_heater_power:
-      friendly_name: "boiler_power"
+      friendly_name: "Heater_power"
+      unit_of_measurement: kW
       value_template: "{{ state_attr('sensor.rm_heater', 'power_consumption') }}"
     rm_heater_amp:
-      friendly_name: "boiler_amp"
+      friendly_name: "Heater_amp"
+      unit_of_measurement: A
       value_template: "{{ state_attr('sensor.rm_heater', 'electric_current') }}"
     rm_heater_on_time:
-      friendly_name: "boiler_on_time"
+      friendly_name: "Heater_on_time"
       value_template: "{{ state_attr('sensor.rm_heater', 'time_on') }}"
+    rm_heater_status:
+      friendly_name: "heater_state"
+      value_template:  >-
+        {% if state_attr('sensor.rm_heater', 'state') == 'ON' %}
+          on
+        {% else %}
+          off
+        {% endif %}
 

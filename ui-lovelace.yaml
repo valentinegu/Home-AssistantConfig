@@ -365,15 +365,31 @@ views:
                   service_data:
                     entity_id: media_player.living_room_tv
                     source: "Plex"
+          - type: media-control
+            entity: media_player.living_room_tv
 
-      - type: media-control
-        entity: media_player.living_room_tv
-
-      - type: entities
-        entities:
-          - name: Date
-            entity: input_select.tal_aviad
-          - name: Play
-            entity: script.tal_and_aviad
-          - name: pause
-            entity: media_player.living_room_speaker
+      - type: vertical-stack
+        title: LivingRoom Speaker
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: button
+                icon: mdi:power
+                name: Start Tal&Aviad
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: script.tal_and_aviad
+              - type: button
+                icon: mdi:play-pause
+                name: Pause/Play Tal&Aviad
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: media_player.media_play_pause
+                  service_data:
+                    entity_id: media_player.living_room_speaker
+          - type: entities
+            entities:
+              - name: Date
+                entity: input_select.tal_aviad

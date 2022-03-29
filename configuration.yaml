@@ -154,19 +154,23 @@ webostv:
 rest_command:
   duckdns_update:
     url: !secret duckdns_url
+  
   boiler_turnon:
     url: !secret boiler_on_url
     method: POST
     payload: '{"minutes": {{states(''input_select.watter_heater_timer_select'')}}}'
     content_type: "application/json"
+  
   boiler_turnoff:
     url: !secret boiler_off_url
     method: POST
+  
   rm_heater_turnon:
     url: !secret rm_heater_on_url
     method: POST
     payload: '{ "minutes": {{states(''input_select.room_heater_timer_select'')}}}'
     content_type: "application/json"
+  
   rm_heater_turnoff:
     url: !secret rm_heater_off_url
     method: POST
